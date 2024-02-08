@@ -3,11 +3,13 @@ import { Header } from "../components/Header";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { url } from "../const";
-import { useHistory, useParams } from "react-router-dom";
+// import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./editTask.css"
 
 export const EditTask = () => {
-  const history = useHistory();
+  // const history = useHistory();
+  const navigate = useNavigate();
   const { listId, taskId } = useParams();
   const [cookies] = useCookies();
   const [title, setTitle] = useState("");
@@ -32,7 +34,8 @@ export const EditTask = () => {
     })
     .then((res) => {
       console.log(res.data)
-      history.push("/");
+      // history.push("/");
+      navigate("/");
     })
     .catch((err) => {
       setErrorMessage(`更新に失敗しました。${err}`);
@@ -46,7 +49,8 @@ export const EditTask = () => {
       }
     })
     .then(() => {
-      history.push("/");
+      // history.push("/");
+      navigate("/");
     })
     .catch((err) => {
       setErrorMessage(`削除に失敗しました。${err}`);

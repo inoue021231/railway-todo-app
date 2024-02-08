@@ -47,3 +47,11 @@ yarn install
 ```powershell
 yarn start
 ```
+
+# やったこと
+
+## バージョンを変更したパッケージ
+react\
+react-dom\
+react-redux\
+react-router-dom

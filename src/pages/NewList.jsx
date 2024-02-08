@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { Header } from "../components/Header";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { url } from "../const";
 import "./newList.css";
 
 export const NewList = () => {
   const [cookies] = useCookies();
-  const history = useHistory();
+  // const history = useHistory();
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const handleTitleChange = (e) => setTitle(e.target.value);
@@ -23,7 +25,8 @@ export const NewList = () => {
       }
     })
     .then(() => {
-      history.push("/");
+      // history.push("/");
+      navigate("/");
     })
     .catch((err) => {
       setErrorMessage(`リストの作成に失敗しました。${err}`);

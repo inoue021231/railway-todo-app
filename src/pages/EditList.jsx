@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { useHistory, useParams } from "react-router-dom";
+
+// import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Header } from "../components/Header";
 import { url } from "../const";
 import "./editList.css";
 
 export const EditList = () => {
-  const history = useHistory();
+  // const history = useHistory();
+  const navigate = useNavigate();
   const { listId } = useParams();
   const [title, setTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -24,7 +27,8 @@ export const EditList = () => {
       }
     })
     .then(() => {
-      history.push("/");
+      // history.push("/");
+      navigate("/");
     })
     .catch((err) => {
     setErrorMessage(`更新に失敗しました。 ${err}`);
@@ -38,7 +42,8 @@ export const EditList = () => {
       }
     })
     .then(() => {
-      history.push("/");
+      // history.push("/");
+      navigate("/");
     })
     .catch((err) => {
       setErrorMessage(`削除に失敗しました。${err}`);
