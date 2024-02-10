@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
-// import { Redirect, useHistory, Link } from "react-router-dom";
 import { Navigate, useNavigate, Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import './signin.scss'
@@ -12,7 +11,6 @@ import { url } from '../const'
 export const SignIn = () => {
   const auth = useSelector((state) => state.auth.isSignIn)
   const dispatch = useDispatch()
-  // const history = useHistory();
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -26,7 +24,6 @@ export const SignIn = () => {
       .then((res) => {
         setCookie('token', res.data.token)
         dispatch(signIn())
-        // history.push("/");
         navigate('/')
       })
       .catch((err) => {

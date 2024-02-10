@@ -1,7 +1,5 @@
 import { useCookies } from 'react-cookie'
-// import { useSelector, useDispatch } from "react-redux/es/exports";
 import { useSelector, useDispatch } from 'react-redux'
-// import { useHistory } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 import { signOut } from '../authSlice'
 import './header.scss'
@@ -9,13 +7,11 @@ import './header.scss'
 export const Header = () => {
   const auth = useSelector((state) => state.auth.isSignIn)
   const dispatch = useDispatch()
-  // const history = useHistory();
   const navigate = useNavigate()
-  const [cookies, setCookie, removeCookie] = useCookies() // eslint-disable-line
+  const [, , removeCookie] = useCookies()
   const handleSignOut = () => {
     dispatch(signOut())
     removeCookie('token')
-    // history.push("/signin");
     navigate('/')
   }
 

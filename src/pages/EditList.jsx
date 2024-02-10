@@ -2,14 +2,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 
-// import { useHistory, useParams } from "react-router-dom";
 import { useNavigate, useParams } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { url } from '../const'
 import './editList.scss'
 
 export const EditList = () => {
-  // const history = useHistory();
   const navigate = useNavigate()
   const { listId } = useParams()
   const [title, setTitle] = useState('')
@@ -28,7 +26,6 @@ export const EditList = () => {
         },
       })
       .then(() => {
-        // history.push("/");
         navigate('/')
       })
       .catch((err) => {
@@ -44,7 +41,6 @@ export const EditList = () => {
         },
       })
       .then(() => {
-        // history.push("/");
         navigate('/')
       })
       .catch((err) => {

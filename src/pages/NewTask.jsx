@@ -4,7 +4,6 @@ import axios from 'axios'
 import { url } from '../const'
 import { Header } from '../components/Header'
 import './newTask.scss'
-// import { useHistory } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 
 export const NewTask = () => {
@@ -14,7 +13,6 @@ export const NewTask = () => {
   const [detail, setDetail] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [cookies] = useCookies()
-  // const history = useHistory();
   const navigate = useNavigate()
   const handleTitleChange = (e) => setTitle(e.target.value)
   const handleDetailChange = (e) => setDetail(e.target.value)
@@ -33,7 +31,6 @@ export const NewTask = () => {
         },
       })
       .then(() => {
-        // history.push("/");
         navigate('/')
       })
       .catch((err) => {

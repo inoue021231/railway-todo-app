@@ -2,14 +2,12 @@ import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { Header } from '../components/Header'
-// import { useHistory } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 import { url } from '../const'
 import './newList.scss'
 
 export const NewList = () => {
   const [cookies] = useCookies()
-  // const history = useHistory();
   const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -26,7 +24,6 @@ export const NewList = () => {
         },
       })
       .then(() => {
-        // history.push("/");
         navigate('/')
       })
       .catch((err) => {
