@@ -1,0 +1,33 @@
+@charset "utf-8";
+@use './../button' as b;
+@use './../color' as c;
+
+.new-task {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.new-task-form {
+  color: c.$gray;
+}
+
+.new-task-select-list,
+.new-task-title,
+.new-task-detail {
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.new-task-detail {
+  height: 200px;
+}
+
+.new-task-button {
+  background-color: c.$blue;
+  color: c.$white;
+  @include b.button;
+}
+
+.error-message {
+  color: c.$red;
+}

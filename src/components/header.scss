@@ -1,15 +1,16 @@
 @charset "utf-8";
+@use './../color' as c;
 
 .header {
   width: 100%;
   height: 80px;
-  background-color: #242F9B;
-  color: #ffffff;
+  background-color: c.$blue;
+  color: c.$white;
   display: flex;
   justify-content: space-between;
 }
 
 .sign-out-button {
-  color: #ffffff;
+  color: c.$white;
   margin: auto 25px auto auto;
 }

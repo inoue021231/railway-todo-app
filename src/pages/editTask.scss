@@ -1,0 +1,35 @@
+@charset "utf-8";
+@use './../button' as b;
+@use './../color' as c;
+
+.edit-task {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.edit-task-form {
+  color: c.$gray;
+}
+
+.edit-task-title,
+.edit-task-detail {
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.delete-task-button {
+  color: c.$red;
+  border: solid 1px c.$red;
+  margin: 25px 5px;
+  @include b.button;
+}
+
+.edit-task-button {
+  background-color: c.$blue;
+  color: c.$white;
+  @include b.button;
+}
+
+.error-message {
+  color: c.$red;
+}
