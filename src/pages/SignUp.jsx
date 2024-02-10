@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { useSelector, useDispatch } from 'react-redux'
 // import { useHistory, Redirect } from "react-router-dom";

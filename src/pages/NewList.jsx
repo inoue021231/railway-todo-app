@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { Header } from '../components/Header'

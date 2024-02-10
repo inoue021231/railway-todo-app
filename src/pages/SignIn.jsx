@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 // import { Redirect, useHistory, Link } from "react-router-dom";
@@ -17,7 +17,7 @@ export const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState()
-  const [cookies, setCookie, removeCookie] = useCookies() // eslint-disable-line
+  const [, setCookie] = useCookies()
   const handleEmailChange = (e) => setEmail(e.target.value)
   const handlePasswordChange = (e) => setPassword(e.target.value)
   const onSignIn = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import { url } from '../const'
