@@ -13,16 +13,24 @@ export const EditTask = () => {
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
   const [isDone, setIsDone] = useState()
+  const [limit, setLimit] = useState(new Date())
+  const [limitDate, setLimitDate] = useState('')
+  const [limitTime, setLimitTime] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const handleTitleChange = (e) => setTitle(e.target.value)
   const handleDetailChange = (e) => setDetail(e.target.value)
+  const handleLimitDateChange = (e) => setLimitDate(e.target.value)
+  const handleLimitTimeChange = (e) => setLimitTime(e.target.value)
   const handleIsDoneChange = (e) => setIsDone(e.target.value === 'done')
+
   const onUpdateTask = () => {
     console.log(isDone)
+    console.log(limit)
     const data = {
       title: title,
       detail: detail,
       done: isDone,
+      limit: limit.toISOString(),
     }
 
     axios
@@ -31,8 +39,7 @@ export const EditTask = () => {
           authorization: `Bearer ${cookies.token}`,
         },
       })
-      .then((res) => {
-        console.log(res.data)
+      .then(() => {
         navigate('/')
       })
       .catch((err) => {
@@ -67,11 +74,48 @@ export const EditTask = () => {
         setTitle(task.title)
         setDetail(task.detail)
         setIsDone(task.done)
+        if (task.limit !== null) {
+          const taskLimit = new Date(task.limit)
+          setLimit(taskLimit)
+          setLimitDate(
+            taskLimit.getFullYear() +
+              '-' +
+              ('0' + (taskLimit.getMonth() + 1)).slice(-2) +
+              '-' +
+              ('0' + taskLimit.getDate()).slice(-2)
+          )
+          setLimitTime(
+            ('0' + taskLimit.getHours()).slice(-2) +
+              ':' +
+              ('0' + taskLimit.getMinutes()).slice(-2)
+          )
+        } else {
+          const today = new Date()
+          setLimit(today)
+          setLimitDate(
+            today.getFullYear() +
+              '-' +
+              ('0' + (today.getMonth() + 1)).slice(-2) +
+              '-' +
+              ('0' + today.getDate()).slice(-2)
+          )
+          setLimitTime(
+            ('0' + today.getHours()).slice(-2) +
+              ':' +
+              ('0' + today.getMinutes()).slice(-2)
+          )
+        }
       })
       .catch((err) => {
         setErrorMessage(`タスク情報の取得に失敗しました。${err}`)
       })
   }, [])
+
+  useEffect(() => {
+    if (limitDate && limitTime) {
+      setLimit(new Date(limitDate + ' ' + limitTime))
+    }
+  }, [limitDate, limitTime])
 
   return (
     <div>
@@ -96,6 +140,30 @@ export const EditTask = () => {
             onChange={handleDetailChange}
             className="edit-task-detail"
             value={detail}
+          />
+          <br />
+          <label>期限</label>
+          <br />
+          <input
+            type="date"
+            onChange={handleLimitDateChange}
+            className="edit-task-detail"
+            value={
+              limit.getFullYear() +
+              '-' +
+              ('0' + (limit.getMonth() + 1)).slice(-2) +
+              '-' +
+              ('0' + limit.getDate()).slice(-2)
+            }
+          />
+          <input
+            type="time"
+            onChange={handleLimitTimeChange}
+            value={
+              ('0' + limit.getHours()).slice(-2) +
+              ':' +
+              ('0' + limit.getMinutes()).slice(-2)
+            }
           />
           <br />
           <div>

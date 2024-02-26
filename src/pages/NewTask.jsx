@@ -11,18 +11,27 @@ export const NewTask = () => {
   const [lists, setLists] = useState([])
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
+  const [limitDate, setLimitDate] = useState('')
+  const [limitTime, setLimitTime] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [cookies] = useCookies()
   const navigate = useNavigate()
   const handleTitleChange = (e) => setTitle(e.target.value)
   const handleDetailChange = (e) => setDetail(e.target.value)
+  const handleLimitDateChange = (e) => setLimitDate(e.target.value)
+  const handleLimitTimeChange = (e) => setLimitTime(e.target.value)
   const handleSelectList = (id) => setSelectListId(id)
   const onCreateTask = () => {
+    const limit = new Date(limitDate + ' ' + limitTime)
+
     const data = {
       title: title,
       detail: detail,
       done: false,
+      limit: limit.toISOString(),
     }
+
+    console.log(data.limit)
 
     axios
       .post(`${url}/lists/${selectListId}/tasks`, data, {
@@ -39,6 +48,7 @@ export const NewTask = () => {
   }
 
   useEffect(() => {
+    const today = new Date()
     axios
       .get(`${url}/lists`, {
         headers: {
@@ -52,6 +62,18 @@ export const NewTask = () => {
       .catch((err) => {
         setErrorMessage(`リストの取得に失敗しました。${err}`)
       })
+    setLimitDate(
+      today.getFullYear() +
+        '-' +
+        ('0' + (today.getMonth() + 1)).slice(-2) +
+        '-' +
+        ('0' + today.getDate()).slice(-2)
+    )
+    setLimitTime(
+      ('0' + today.getHours()).slice(-2) +
+        ':' +
+        ('0' + today.getMinutes()).slice(-2)
+    )
   }, [])
 
   return (
@@ -89,6 +111,11 @@ export const NewTask = () => {
             onChange={handleDetailChange}
             className="new-task-detail"
           />
+          <br />
+          <label>期限</label>
+          <br />
+          <input type="date" onChange={handleLimitDateChange} />
+          <input type="time" onChange={handleLimitTimeChange} />
           <br />
           <button
             type="button"
