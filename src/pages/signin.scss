@@ -3,8 +3,7 @@
 @use './../color' as c;
 
 .signin {
-  width: 500px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .signin-form {
@@ -18,10 +17,10 @@
 
 .email-input,
 .password-input {
-  width: 100%;
+  width: 60%;
   font-size: large;
   height: 30px;
-  margin-bottom: 25px;
+  margin: 25px auto;
 }
 
 .signin-button {
@@ -32,4 +31,11 @@
 
 .error-message {
   color: c.$red;
+}
+
+@media screen and (max-width: 320px) {
+  .signin {
+    text-align: center;
+  }
+  
 }

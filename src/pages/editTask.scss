@@ -3,7 +3,7 @@
 @use './../color' as c;
 
 .edit-task {
-  width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -32,4 +32,18 @@
 
 .error-message {
   color: c.$red;
+}
+
+@media screen and (max-width: 768px) {
+  .edit-task-title,
+  .edit-task-detail {
+    width: 60%;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .edit-task {
+    text-align: center;
+  }
 }

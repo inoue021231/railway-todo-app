@@ -24,8 +24,6 @@ export const EditTask = () => {
   const handleIsDoneChange = (e) => setIsDone(e.target.value === 'done')
 
   const onUpdateTask = () => {
-    console.log(isDone)
-    console.log(limit)
     const data = {
       title: title,
       detail: detail,

@@ -3,7 +3,7 @@
 @use './../color' as c;
 
 .new-task {
-  width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -30,4 +30,18 @@
 
 .error-message {
   color: c.$red;
+}
+
+@media screen and (max-width: 768px) {
+  .new-task-select-list,
+  .new-task-title,
+  .new-task-detail {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .new-task {
+    text-align: center;
+  }
 }

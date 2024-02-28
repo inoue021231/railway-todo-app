@@ -3,7 +3,7 @@
 @use './../color' as c;
 
 .edit-list {
-  width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -31,4 +31,16 @@
 
 .error-message {
   color: c.$red;
+}
+
+@media screen and (max-width: 768px) {
+  .edit-list-title {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .edit-list {
+    text-align: center;
+  }
 }

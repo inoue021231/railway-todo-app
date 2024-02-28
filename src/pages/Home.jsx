@@ -66,7 +66,7 @@ export const Home = () => {
 
   const handleKeyDown = (event) => {
     console.log(event.key)
-    if (lists.length <= 1) return
+    if (lists.length <= 1 || event.key !== 'Tab') return
     const currentIndex = lists.findIndex((item) => item.id === selectListId)
     if (currentIndex === lists.length - 1) {
       handleSelectList(lists[0].id)
@@ -106,6 +106,7 @@ export const Home = () => {
                   onClick={() => handleSelectList(list.id)}
                   tabIndex={isActive ? 0 : -1}
                   role="tab"
+                  aria-label={list.title}
                 >
                   {list.title}
                 </li>

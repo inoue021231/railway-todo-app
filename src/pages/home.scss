@@ -3,7 +3,7 @@
 .taskList {
   margin: 50px auto;
   list-style: none;
-  width: 1000px;
+  width: 100%;
 }
 
 .list-header {
@@ -18,7 +18,7 @@
 .list-tab {
   list-style: none;
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .list-tab-item {
@@ -49,7 +49,7 @@
 .task-item {
   list-style-type: none;
   height: 120px;
-  width: calc(100% - 25px);
+  width: auto;
   background-color: c.$whitesmoke;
   padding-left: 25px;
   font-size: large;
@@ -58,7 +58,7 @@
 
 .task-item-link {
   display: block;
-  width: 100%;
+  width: auto;
   height: 100%;
   text-decoration: none;
   color: c.$black;
@@ -75,4 +75,47 @@
 
 .display-select {
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .list-tab {
+    overflow-x: scroll;
+  }
+
+  .list-header {
+    display: block;
+  }
+
+  .list-menu {
+    text-align: left;
+  }
+
+  .tasks-header {
+    display: block;
+  }
+
+  .display-select-wrapper {
+    width: 100px;
+    margin: 0 0 25px;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  .taskList {
+    text-align: center;
+  }
+
+  .list-menu {
+    text-align: center;
+  }
+
+  .list-tab-item {
+    width: auto;
+  }
+
+  .display-select-wrapper {
+    text-align: center;
+    margin: auto;
+  }
 }

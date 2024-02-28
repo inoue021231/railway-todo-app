@@ -3,7 +3,7 @@
 @use './../color' as c;
 
 .new-list {
-  width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -20,4 +20,14 @@
   background-color: c.$blue;
   color: c.$white;
   @include b.button;
+}
+
+@media screen and (max-width: 320px) {
+  .new-list {
+    text-align: center;
+  }
+
+  .new-list-title {
+    width: 60%;
+  }
 }

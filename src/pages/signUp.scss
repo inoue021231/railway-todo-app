@@ -2,21 +2,21 @@
 @use './../color' as c;
 
 .signup {
-  width: 500px;
+  width: 100%;
   margin: 0 auto;
 }
 .signup-form {
-  margin: 25px 0;
+  margin: 25px 5px;
   color: c.$gray;
 }
 
 .email-input,
 .name-input,
 .password-input {
-  width: 100%;
+  width: 60%;
   font-size: large;
   height: 30px;
-  margin-bottom: 25px;
+  margin: 25px auto;
 }
 
 .signup-button {
@@ -29,4 +29,10 @@
 
 .error-message {
   color: c.$red;
+}
+
+@media screen and (max-width: 320px) {
+  .signup {
+    text-align: center;
+  }
 }

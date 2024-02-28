@@ -31,8 +31,6 @@ export const NewTask = () => {
       limit: limit.toISOString(),
     }
 
-    console.log(data.limit)
-
     axios
       .post(`${url}/lists/${selectListId}/tasks`, data, {
         headers: {
